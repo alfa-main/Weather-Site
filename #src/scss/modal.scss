@@ -1,0 +1,44 @@
+.close__btn{
+	cursor: pointer;
+	float: right;
+	font-size: 25px;
+	color: #fff;
+}
+
+.modal{
+    background: rgba(0,0,0,0.2);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    perspective: 500px;
+    z-index: 100;
+
+    &__wrapper {
+      max-width: 500px;
+      top: 15%;
+      background: rgb(53, 148, 191);
+      position: absolute;
+      text-align: left;
+      box-shadow: 0 0 13px 0 rgba(0,0,0,0.4);
+      padding: 20px;
+      border-radius: 2em;
+    }
+
+    &__header, &__body {
+      padding: 10px 20px;
+    }
+    &__header {
+      text-align: center;
+      color: #fff;
+      font-size: 2em;
+    }
+}
+
+.hide{
+	visibility: hidden;
+}

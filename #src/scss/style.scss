@@ -1,0 +1,264 @@
+@mixin font($font_name, $file_name, $weight, $style) { //mixin for formation code font
+
+  @font-face {
+  font-family: $font_name;
+  font-display: swap;
+  src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2");
+  font-weight: #{$weight};
+  font-style: #{$style};
+  }
+}
+/*connect font*/
+@import "fonts";
+/*nulling styles*/
+@import "null"; 
+/*modal window styles*/
+@import "modal";
+
+
+$padding: 1em;
+$icon-size: 50px;
+$color: #fff;
+$fzmedia: 1em;
+
+
+.weather {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  color: $color;
+  z-index: 1;
+}
+/*Style for background day or night*/
+html[data-theme="day"] .weather,
+.weather {
+  background: linear-gradient(360deg, #3594bf 0%, rgba(255, 255, 255, 0) 100%), #53a6cb;
+}
+html[data-theme="night"] .weather {
+  background: linear-gradient(360deg, #55707e 0%, rgba(255, 255, 255, 0) 100%), #042232;
+}
+
+.weather__inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: $padding;
+}
+/*Style for input city name*/
+.search{
+  display: flex;
+  justify-content: space-between;
+
+    &__city{
+      width: 40%;
+      display: flex;
+      justify-content: space-between;
+      @media screen and (max-width: 426px) {
+        font-size: $fzmedia;
+        width: 100%;
+        justify-content: flex-start;
+      }
+      .search__box {
+        width: 100%;
+        max-width: 280px;
+        padding: 10px 15px;
+        border: none;
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 16px 0px 16px 0px;
+        border-bottom: 3px solid #fff;
+        color: #fff;
+        font-weight: 300;
+        font-size: 20px;
+        transition: 0.2s ease-out;
+        &::-moz-placeholder{
+          color: $color;
+        }
+        &::-webkit-input-placeholder{
+          color: $color;
+        }
+        @media screen and (max-width: 768px) {
+          font-size: $fzmedia;
+        }
+      }
+    }
+    &__byselect {
+      width: 100%;
+      max-width: 280px;
+      padding: 10px 15px;
+      border: none;
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 16px 0px 16px 0px;
+      border-bottom: 3px solid $color;
+      color: $color;
+      font-weight: 300;
+      font-size: 20px;
+      cursor: pointer;
+      @media screen and (max-width: 768px) {
+        font-size: $fzmedia;
+      }
+
+      option {
+        background-color: #3594bf;
+      }
+    }
+}
+
+.search__btn {
+  width: 100%;
+    max-width: 280px;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 16px 0px 16px 0px;
+    border-bottom: 3px solid $color;
+    color: $color;
+    font-size: 20px;
+    font-weight: 300;
+    cursor: pointer;
+    @media screen and (max-width: 768px) {
+      font-size: $fzmedia;
+    }
+}
+
+.night {
+  background-color: #042232 !important;
+}
+
+/*Style for current value*/
+.current {
+  text-align: center;
+  margin-top: $padding * 2;
+  margin-bottom: $padding * 2;
+  
+  &__city {
+    font-size: 3em;
+  }
+  &__description {
+    font-size: 1.5em;
+  }
+  &__temperature {
+    font-size: 4em;
+  }
+}
+/*Style to weather for 5 days*/
+.forecast {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: $padding * 4;
+
+  &__item {
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &__time {
+    margin-bottom: $padding ;
+  }
+
+  &__temperature {
+    font-size: 1.5em;
+    margin-top: $padding;
+  }
+
+  &__icon {
+    width: $icon-size;
+    height: $icon-size;
+  }
+}
+/*Style for other weather indicators*/
+.details {
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $padding * 2;
+  }
+  
+  &__name {
+    margin-bottom: $padding;
+  }
+
+  &__value {
+    font-size: 1.5em;
+  }
+}
+/*style for transition background between day or night*/
+html.transition,
+html.transition * {
+  transition: all 2000ms !important;
+  transition-delay: 0 !important;
+}
+/* style for add icon*/
+.icon__01d,
+.icon__01n,
+.icon__02d,
+.icon__02n,
+.icon__03d,
+.icon__03n,
+.icon__04d,
+.icon__04n,
+.icon__09d,
+.icon__09n,
+.icon__10d,
+.icon__10n,
+.icon__11d,
+.icon__11n,
+.icon__13d,
+.icon__13n,
+.icon__50d,
+.icon__50n {
+  background-size: $icon-size;
+  background-repeat: no-repeat;
+}
+  
+.icon__01d,
+.icon__01n {
+  background-image: url("../img/01d.webp");
+}
+  
+.icon__02d,
+.icon__02n {
+  background-image: url("../img/02d.webp");
+}
+  
+.icon__03d,
+.icon__03n {
+  background-image: url("../img/03d.webp");
+}
+  
+.icon__04d,
+.icon__04n {
+  background-image: url("../img/04d.webp");
+}
+  
+.icon__09d,
+.icon__09n {
+  background-image: url("../img/09d.webp");
+}
+  
+.icon__10d,
+.icon__10n {
+  background-image: url("../img/10d.webp");
+}
+  
+.icon__11d,
+.icon__11n {
+  background-image: url("../img/11d.webp");
+}
+  
+.icon__13d,
+.icon__13n {
+  background-image: url("../img/13d.webp");
+}
+  
+.icon__50d,
+.icon__50n {
+  background-image: url("../img/50d.webp");
+}
+
+
+//media queries
+
+
+
